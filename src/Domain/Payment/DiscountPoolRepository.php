@@ -13,12 +13,5 @@ interface DiscountPoolRepository
      * @param Seat $seat
      * @return int
      */
-    public function getNumberOfDiscounts(ConferenceId $conferenceId, Seat $seat);
-
-    /**
-     * @param ConferenceId $conferenceId
-     * @param Seat $seat
-     * @return int
-     */
     public function getDiscountPerSeat(ConferenceId $conferenceId, Seat $seat);
 }
