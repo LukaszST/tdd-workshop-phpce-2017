@@ -18,7 +18,6 @@ class PoolDiscountStrategyTest extends TestCase
         $numberOfSeats = 0;
         $conferenceId = new ConferenceId(7);
         $discountPoolRepository = $this->getMockBuilder(DiscountPoolRepository::class)->getMock();
-        $discountPoolRepository->method('getNumberOfDiscounts')->willReturn(100);
         $discountPoolRepository->method('getDiscountPerSeat')->willReturn(50);
         $poolDiscountStrategy = new PoolDiscountStrategy($conferenceId, $discountPoolRepository);
         $seat = new Seat("Regular", $numberOfSeats);
@@ -36,7 +35,6 @@ class PoolDiscountStrategyTest extends TestCase
         $conferenceId = new ConferenceId(3);
         $numberOfSeats = 100;
         $discountPoolRepository = $this->getMockBuilder(DiscountPoolRepository::class)->getMock();
-        $discountPoolRepository->method('getNumberOfDiscounts')->willReturn(200);
         $discountPoolRepository->method('getDiscountPerSeat')->willReturn(50);
         $poolDiscountStrategy = new PoolDiscountStrategy($conferenceId, $discountPoolRepository);
         $seat = new Seat("Regular", $numberOfSeats);
@@ -51,16 +49,5 @@ class PoolDiscountStrategyTest extends TestCase
      */
     public function returns_discount_per_seat_multiplied_by_number_of_available_discounts_when_there_are_not_enough_discounts()
     {
-        $conferenceId = new ConferenceId(3);
-        $numberOfSeats = 100;
-        $discountPoolRepository = $this->getMockBuilder(DiscountPoolRepository::class)->getMock();
-        $discountPoolRepository->method('getNumberOfDiscounts')->willReturn(30);
-        $discountPoolRepository->method('getDiscountPerSeat')->willReturn(50);
-        $poolDiscountStrategy = new PoolDiscountStrategy($conferenceId, $discountPoolRepository);
-        $seat = new Seat("Regular", $numberOfSeats);
-
-        $discount = $poolDiscountStrategy->calculate($seat);
-
-        $this->assertEquals(1500, $discount);
     }
 }
