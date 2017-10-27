@@ -19,12 +19,7 @@ class PoolDiscountStrategy implements SeatDiscountStrategy
     public function calculate(Seat $seat): int
     {
         $discountPerSeat = $this->discountPoolRepository->getDiscountPerSeat($this->conferenceId, $seat);
-        $numberOfDiscounts = $this->discountPoolRepository->getNumberOfDiscounts($this->conferenceId, $seat);
 
-        if ($seat->getQuantity() <= $numberOfDiscounts) {
-            return $discountPerSeat * $seat->getQuantity();
-        } else {
-            return $discountPerSeat * $numberOfDiscounts;
-        }
+        return $discountPerSeat * $seat->getQuantity();
     }
 }
