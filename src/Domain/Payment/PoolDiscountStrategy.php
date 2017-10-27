@@ -21,6 +21,10 @@ class PoolDiscountStrategy implements SeatDiscountStrategy
         $discountPerSeat = $this->discountPoolRepository->getDiscountPerSeat($this->conferenceId, $seat);
         $numberOfDiscounts = $this->discountPoolRepository->getNumberOfDiscounts($this->conferenceId, $seat);
 
-        return $discountPerSeat * min($numberOfDiscounts, $seat->getQuantity());
+        if ($seat->getQuantity() <= $numberOfDiscounts) {
+            return $discountPerSeat * $seat->getQuantity();
+        } else {
+            return $discountPerSeat * $numberOfDiscounts;
+        }
     }
 }
