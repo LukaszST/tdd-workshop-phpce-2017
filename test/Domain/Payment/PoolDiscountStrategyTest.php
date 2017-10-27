@@ -13,15 +13,15 @@ class PoolDiscountStrategyTest extends TestCase
     /**
      * @test
      */
-    public function returns_discount_equal_to_zero_if_discount_pool_is_empty()
+    public function returns_discount_equal_to_zero_if_number_of_seats_equals_zero()
     {
-        $seatQuantity = 34;
+        $numberOfSeats = 0;
         $conferenceId = new ConferenceId(7);
         $discountPoolRepository = $this->getMockBuilder(DiscountPoolRepository::class)->getMock();
-        $discountPoolRepository->method('getNumberOfDiscounts')->willReturn(0);
-        $discountPoolRepository->method('getDiscountPerSeat')->willReturn(13);
+        $discountPoolRepository->method('getNumberOfDiscounts')->willReturn(100);
+        $discountPoolRepository->method('getDiscountPerSeat')->willReturn(50);
         $poolDiscountStrategy = new PoolDiscountStrategy($conferenceId, $discountPoolRepository);
-        $seat = new Seat("Regular", $seatQuantity);
+        $seat = new Seat("Regular", $numberOfSeats);
 
         $discount = $poolDiscountStrategy->calculate($seat);
 
