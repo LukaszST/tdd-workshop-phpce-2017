@@ -43,11 +43,4 @@ class PoolDiscountStrategyTest extends TestCase
 
         $this->assertEquals(5000, $discount);
     }
-
-    /**
-     * @test
-     */
-    public function returns_discount_per_seat_multiplied_by_number_of_available_discounts_when_there_are_not_enough_discounts()
-    {
-    }
 }
