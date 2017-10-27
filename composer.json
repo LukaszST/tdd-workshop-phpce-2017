@@ -1,7 +1,7 @@
 {
   "name": "rstgroup/conference-system",
   "require-dev": {
-    "phpunit/phpunit": "^4.8",
+    "phpunit/phpunit": "^6.4",
     "symfony/http-foundation": "^3.1"
   },
   "autoload": {
