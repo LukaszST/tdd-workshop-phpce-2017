@@ -3,6 +3,7 @@
 namespace RstGroup\ConferenceSystem\Domain\Payment\Test;
 
 use PHPUnit\Framework\TestCase;
+use RstGroup\ConferenceSystem\Domain\Payment\DiscountPoolRepository;
 use RstGroup\ConferenceSystem\Domain\Payment\PoolDiscountStrategy;
 use RstGroup\ConferenceSystem\Domain\Reservation\ConferenceId;
 use RstGroup\ConferenceSystem\Domain\Reservation\Seat;
