@@ -2,12 +2,6 @@
 
 namespace RstGroup\ConferenceSystem\Domain\Payment;
 
-use RstGroup\ConferenceSystem\Domain\Reservation\Seat;
-
-class PoolDiscountStrategy implements SeatDiscountStrategy
+class PoolDiscountStrategy
 {
-    public function calculate(Seat $seat): int
-    {
-        return 0;
-    }
 }
